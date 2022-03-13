@@ -1,0 +1,24 @@
+<div class="col-md-3">
+  <table class="table table-user">>
+ 　　<h2>User info</h2>
+  　<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image2.jpg"%>
+ 　<tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+   </tr>
+   <tr>
+    <th>Introduction</th>
+    <th><%= user.introduction %></th>
+   </tr>
+  </table>
+ <p><%= link_to "編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %></p>
+
+  <%= form_with model: book, url:'/books', local:true do |f| %>
+  <h2>New book</h2>
+  <h5>Title</h5>
+  <%= f.text_field :title %>
+  <h5>Opinipn</h5>
+  <%= f.text_field :body %>
+  <p><%= f.submit 'Create Book',class: "col-xs-12 btn btn-primary" %></p>
+  <% end %>
+</div>

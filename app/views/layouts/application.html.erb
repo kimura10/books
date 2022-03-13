@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Books</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header class="navbar-dark bg-dark">
+      <div class="container">
+        <div class="row">
+         <div class="col-md-7">
+          <nav>
+             <a class="navbar-brand" href="/"><span>Books</span></a>
+          </nav>
+         </div>
+          <div class="col-md-5">
+           <ul class= "bar">
+             <nav class="navbar-brand">
+              <% if user_signed_in? %>
+                <li><a class="fas fa-home nav-link text-light" <%= link_to "Home", user_path(current_user.id) %> </a></li>
+                <li><a class="fas fa-users nav-link text-light" href="/users"> Users</a></li>
+                <li><a class="fas fa-book-open nav-link text-light" href="/books"> Books</a></li>
+                <li><a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out"> Log out</a></li>
+              <% else %>
+                <li><a class="fas fa-home nav-link text-light" href="/"> Home</a></li>
+                <li><a class="fas fa-link nav-link text-light" href="/home/about"> About</a></li>
+                <li><a class="fas fa-user-plus nav-link text-light" href="/users/sign_up"> Sign up</a></li>
+                <li><a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in"> Log in</a></li>
+              <% end %>
+            </nav>
+           </ul>
+         </div>
+        </div>
+       </div>
+    </header>
+              <%= yield %>
+    <footer>
+        <div class="d-flex align-items-center justify-content-center">
+          <p>practice ruby</p>
+        </div>
+    </footer>
+
+  </body>
+</html>
+
